@@ -1,0 +1,662 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  :root {
+    --c-primary:   #CC2649;
+    --c-secondary: #992C4B;
+    --c-mid:       #66324C;
+    --c-dark:      #33384E;
+    --c-deep:      #003E4F;
+    --c-light:     #fdf0f3;
+    --c-white:     #ffffff;
+    --c-text:      #1a1a2e;
+    --c-muted:     #64748b;
+    --radius:      5px;
+    --font:        Arial, sans-serif;
+  }
+
+  @page {
+    size: A4;
+    margin: 0;
+  }
+
+  html, body {
+    width: 210mm;
+    font-family: var(--font);
+    font-size: 10pt;
+    color: var(--c-text);
+    background: white;
+  }
+
+  /* ── PORTADA ────────────────────────────── */
+  .cover {
+    width: 210mm;
+    height: 297mm;
+    background: var(--c-primary);
+    /* WeasyPrint gradient */
+    background-image: linear-gradient(135deg,
+      #CC2649 0%, #992C4B 28%, #66324C 52%, #33384E 76%, #003E4F 100%);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    page-break-after: always;
+    overflow: hidden;
+    position: relative;
+  }
+
+  /* Círculos decorativos via SVG inline en bg */
+  .cover-deco1 {
+    position: absolute;
+    top: -90px; right: -90px;
+    width: 360px; height: 360px;
+    border-radius: 50%;
+    border: 65px solid rgba(255,255,255,0.07);
+  }
+  .cover-deco2 {
+    position: absolute;
+    bottom: 100px; left: -70px;
+    width: 280px; height: 280px;
+    border-radius: 50%;
+    border: 45px solid rgba(255,255,255,0.05);
+  }
+
+  .cover-top {
+    padding: 42px 50px 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+  }
+  .cover-logo-box {
+    border: 2px dashed rgba(255,255,255,0.4);
+    border-radius: var(--radius);
+    padding: 10px 20px;
+    color: rgba(255,255,255,0.65);
+    font-size: 9pt;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+  .cover-meta {
+    text-align: right;
+    color: rgba(255,255,255,0.6);
+    font-size: 9pt;
+    line-height: 1.9;
+  }
+
+  .cover-body {
+    padding: 0 50px;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  .cover-label {
+    font-size: 8.5pt;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.5);
+    margin-bottom: 18px;
+  }
+  .cover-title {
+    font-size: 40pt;
+    font-weight: 800;
+    color: white;
+    line-height: 1.05;
+    margin-bottom: 14px;
+  }
+  .cover-subtitle {
+    font-size: 14pt;
+    font-weight: 300;
+    color: rgba(255,255,255,0.78);
+    margin-bottom: 38px;
+    max-width: 400px;
+    line-height: 1.4;
+  }
+  .cover-divider {
+    width: 54px; height: 4px;
+    background: rgba(255,255,255,0.42);
+    border-radius: 2px;
+    margin-bottom: 32px;
+  }
+  .cover-client-label {
+    font-size: 8pt;
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    color: rgba(255,255,255,0.48);
+    margin-bottom: 6px;
+  }
+  .cover-client-name {
+    font-size: 17pt;
+    font-weight: 700;
+    color: rgba(255,255,255,0.95);
+  }
+
+  .cover-bottom {
+    padding: 22px 50px;
+    background-color: rgba(0,0,0,0.28);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .cover-bottom-company { color: rgba(255,255,255,0.92); font-size: 11pt; font-weight: 700; }
+  .cover-bottom-tagline { color: rgba(255,255,255,0.46); font-size: 8.5pt; margin-top: 2px; }
+  .cover-version {
+    background-color: rgba(255,255,255,0.14);
+    border-radius: 20px;
+    padding: 5px 16px;
+    color: rgba(255,255,255,0.76);
+    font-size: 9pt;
+  }
+
+  /* ── PÁGINAS ────────────────────────────── */
+  .page {
+    width: 210mm;
+    height: 297mm;
+    display: flex;
+    flex-direction: column;
+    page-break-after: always;
+    overflow: hidden;
+  }
+  .page.last { page-break-after: auto; height: auto; }
+
+  .page-header {
+    background-color: var(--c-dark);
+    padding: 13px 38px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-shrink: 0;
+  }
+  .page-header-company { color: rgba(255,255,255,0.92); font-size: 9pt; font-weight: 600; }
+  .page-header-right   { color: rgba(255,255,255,0.46); font-size: 8.5pt; }
+
+  .page-body {
+    padding: 24px 38px 16px;
+    flex: 1;
+  }
+
+  .page-footer {
+    background-color: var(--c-deep);
+    padding: 9px 38px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-shrink: 0;
+  }
+  .page-footer-text { color: rgba(255,255,255,0.45); font-size: 7.5pt; }
+  .page-footer-conf {
+    background-color: rgba(255,255,255,0.1);
+    border-radius: 10px;
+    padding: 2px 10px;
+    color: rgba(255,255,255,0.55);
+    font-size: 7.5pt;
+  }
+
+  /* ── TIPOGRAFÍA ─────────────────────────── */
+  .section-tag {
+    display: inline-block;
+    background-color: var(--c-primary);
+    color: white;
+    font-size: 7.5pt;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    padding: 3px 10px;
+    border-radius: 3px;
+    margin-bottom: 6px;
+  }
+
+  h1.section-title {
+    font-size: 15pt;
+    font-weight: 800;
+    color: var(--c-dark);
+    margin-bottom: 7px;
+    border-left: 5px solid var(--c-primary);
+    padding-left: 11px;
+    line-height: 1.15;
+  }
+  h2.sub-title {
+    font-size: 10pt;
+    font-weight: 700;
+    color: var(--c-primary);
+    margin: 14px 0 6px;
+  }
+  p { line-height: 1.58; margin-bottom: 7px; font-size: 9.5pt; }
+  .sep { height: 1px; background-color: #ede0e4; margin: 12px 0; }
+
+  /* ── GRID HELPERS ───────────────────────── */
+  .two-col { display: flex; gap: 12px; margin: 10px 0; }
+  .two-col > * { flex: 1; }
+
+  .col-card {
+    background-color: var(--c-light);
+    border-radius: var(--radius);
+    padding: 13px 15px;
+    border-top: 3px solid var(--c-primary);
+  }
+  .col-card h3 { font-size: 9pt; font-weight: 700; color: var(--c-dark); margin-bottom: 5px; }
+  .col-card p  { font-size: 8.5pt; margin: 0; line-height: 1.5; }
+
+  /* ── DATOS DEL CLIENTE ──────────────────── */
+  .client-info-bar {
+    background-color: var(--c-light);
+    border-radius: var(--radius);
+    padding: 11px 15px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px 0;
+    margin-bottom: 14px;
+    border-top: 3px solid var(--c-secondary);
+  }
+  .info-field { width: 33.33%; }
+  .info-field label {
+    display: block;
+    font-size: 6.5pt;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--c-muted);
+    margin-bottom: 2px;
+  }
+  .info-field span { font-size: 9pt; font-weight: 600; color: var(--c-dark); }
+
+  /* ── TABLA DESAFÍOS ─────────────────────── */
+  table.challenge-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 10px 0;
+    font-size: 8.5pt;
+  }
+  table.challenge-table th {
+    background-color: var(--c-mid);
+    color: white;
+    padding: 7px 11px;
+    text-align: left;
+    font-size: 8pt;
+  }
+  table.challenge-table td {
+    padding: 7px 11px;
+    border-bottom: 1px solid #ede0e4;
+    vertical-align: top;
+    line-height: 1.42;
+  }
+  table.challenge-table tr:nth-child(even) td { background-color: var(--c-light); }
+
+  /* ── PHASE CARDS ────────────────────────── */
+  .phase-card {
+    display: flex;
+    border-radius: var(--radius);
+    overflow: hidden;
+    margin-bottom: 9px;
+    border: 1px solid #e0ccd2;
+  }
+  .phase-left {
+    width: 118px;
+    background-color: var(--c-primary);
+    background-image: linear-gradient(160deg, #CC2649, #992C4B);
+    padding: 12px 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    flex-shrink: 0;
+  }
+  .phase-num   { font-size: 22pt; font-weight: 900; color: rgba(255,255,255,0.22); line-height: 1; }
+  .phase-time  { font-size: 7.5pt; color: rgba(255,255,255,0.9); font-weight: 600; margin-top: 5px; }
+  .phase-valor { font-size: 7pt; color: rgba(255,255,255,0.68); margin-top: 2px; }
+  .phase-right { background-color: var(--c-light); padding: 11px 15px; flex: 1; }
+  .phase-name  { font-size: 9.5pt; font-weight: 700; color: var(--c-dark); margin-bottom: 3px; }
+  .phase-obj   { font-size: 8pt; color: var(--c-muted); margin-bottom: 6px; line-height: 1.42; }
+  .phase-tags  { display: flex; flex-wrap: wrap; gap: 3px; }
+  .phase-tag {
+    background-color: white;
+    border: 1px solid #dac5cc;
+    border-radius: 10px;
+    padding: 1px 8px;
+    font-size: 7pt;
+    color: var(--c-mid);
+  }
+
+  /* ── BENEFICIOS ─────────────────────────── */
+  .benefits-grid { display: flex; flex-wrap: wrap; gap: 8px; margin: 9px 0; }
+  .benefit-item {
+    width: calc(50% - 4px);
+    display: flex;
+    gap: 9px;
+    align-items: flex-start;
+    padding: 10px 11px;
+    border-radius: var(--radius);
+    background-color: var(--c-light);
+  }
+  .benefit-icon {
+    width: 28px; height: 28px;
+    background-color: var(--c-primary);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+    flex-shrink: 0;
+    color: white;
+    text-align: center;
+    line-height: 28px;
+  }
+  .benefit-text h4 { font-size: 8.5pt; font-weight: 700; color: var(--c-dark); margin-bottom: 2px; }
+  .benefit-text p  { font-size: 8pt; color: var(--c-muted); margin: 0; line-height: 1.42; }
+
+  /* ── TABLA PRECIOS ──────────────────────── */
+  table.price-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 11px 0;
+    font-size: 9pt;
+  }
+  table.price-table thead tr { background-color: var(--c-dark); color: white; }
+  table.price-table thead th {
+    padding: 8px 11px;
+    text-align: left;
+    font-weight: 600;
+    font-size: 8.5pt;
+  }
+  table.price-table thead th:not(:first-child) { text-align: right; }
+  table.price-table tbody tr:nth-child(even) { background-color: var(--c-light); }
+  table.price-table tbody tr:nth-child(odd)  { background-color: white; }
+  table.price-table tbody td {
+    padding: 8px 11px;
+    border-bottom: 1px solid #eee;
+  }
+  table.price-table tbody td:not(:first-child) { text-align: right; }
+  table.price-table tfoot tr { background-color: var(--c-deep); color: white; }
+  table.price-table tfoot td {
+    padding: 9px 11px;
+    font-weight: 700;
+    font-size: 9pt;
+  }
+  table.price-table tfoot td:not(:first-child) { text-align: right; }
+
+  .payment-note {
+    background-color: var(--c-light);
+    border-left: 4px solid var(--c-primary);
+    padding: 9px 13px;
+    font-size: 8.5pt;
+    color: var(--c-dark);
+    margin: 9px 0;
+    line-height: 1.52;
+  }
+
+  /* ── DIFERENCIADORES ────────────────────── */
+  .differentiators { display: flex; flex-wrap: wrap; gap: 8px; margin: 11px 0; }
+  .diff-item {
+    width: calc(50% - 4px);
+    padding: 11px 13px;
+    border-radius: var(--radius);
+    border: 1px solid #e0ccd2;
+    background-color: white;
+    border-top: 3px solid var(--c-primary);
+  }
+  .diff-item h4 { font-size: 8.5pt; font-weight: 700; color: var(--c-dark); margin-bottom: 3px; }
+  .diff-item p  { font-size: 8pt; color: var(--c-muted); margin: 0; line-height: 1.42; }
+
+  /* ── TÉRMINOS ───────────────────────────── */
+  .terms-grid { display: flex; flex-wrap: wrap; gap: 6px; margin: 11px 0; }
+  .term-item {
+    width: calc(50% - 3px);
+    padding: 8px 11px;
+    background-color: var(--c-light);
+    border-radius: var(--radius);
+    font-size: 8pt;
+    line-height: 1.42;
+    border-left: 3px solid var(--c-mid);
+  }
+
+  /* ── CTA ────────────────────────────────── */
+  .cta-box {
+    background-color: var(--c-dark);
+    border-radius: var(--radius);
+    padding: 20px 26px;
+    text-align: center;
+    color: white;
+    margin: 13px 0 0;
+  }
+  .cta-box h2 { font-size: 13pt; font-weight: 800; margin-bottom: 7px; color: white; }
+  .cta-box p  { font-size: 8.5pt; color: rgba(255,255,255,0.7); margin-bottom: 14px; }
+  .cta-actions { display: flex; justify-content: center; gap: 16px; }
+  .cta-action {
+    background-color: rgba(255,255,255,0.1);
+    border: 1px solid rgba(255,255,255,0.2);
+    border-radius: 20px;
+    padding: 7px 17px;
+    font-size: 8.5pt;
+    color: rgba(255,255,255,0.88);
+    text-align: center;
+  }
+  .cta-action strong { color: white; display: block; font-size: 9pt; margin-bottom: 1px; }
+</style>
+</head>
+<body>
+
+<!-- PORTADA -->
+<div class="cover">
+  <div class="cover-deco1"></div>
+  <div class="cover-deco2"></div>
+  <div class="cover-top">
+    <div class="cover-logo-box">TU LOGO</div>
+    <div class="cover-meta">
+      Fecha: 30 de marzo de 2026<br>
+      Versión: 1.0<br>
+      Confidencial
+    </div>
+  </div>
+  <div class="cover-body">
+    <div class="cover-label">Propuesta comercial</div>
+    <div class="cover-title">Ecosistema<br>Digital MASER</div>
+    <div class="cover-subtitle">Plataforma integrada de ventas, gestión y atención al cliente</div>
+    <div class="cover-divider"></div>
+    <div class="cover-client-label">Preparada para</div>
+    <div class="cover-client-name">MASER Colombia</div>
+  </div>
+  <div class="cover-bottom">
+    <div>
+      <div class="cover-bottom-company">Forbin SAS</div>
+      <div class="cover-bottom-tagline">Desarrollo de software basado en IA</div>
+    </div>
+    <div class="cover-version">v1.0 · 2026</div>
+  </div>
+</div>
+
+<!-- PÁGINA 1 -->
+<div class="page">
+  <div class="page-header">
+    <span class="page-header-company">Forbin SAS · Propuesta Comercial</span>
+    <span class="page-header-right">MASER Colombia · 2026</span>
+  </div>
+  <div class="page-body">
+    <div class="section-tag">Información general</div>
+    <div class="client-info-bar">
+      <div class="info-field"><label>Cliente</label><span>MASER Colombia</span></div>
+      <div class="info-field"><label>Contacto</label><span>Gerencia comercial</span></div>
+      <div class="info-field"><label>Sector</label><span>Equipos geotécnicos B2B</span></div>
+      <div class="info-field"><label>Proveedor</label><span>Forbin SAS</span></div>
+      <div class="info-field"><label>Fecha</label><span>30 de marzo de 2026</span></div>
+      <div class="info-field"><label>Vigencia</label><span>30 días calendario</span></div>
+    </div>
+
+    <div class="section-tag">01</div>
+    <h1 class="section-title">Resumen Ejecutivo</h1>
+    <p>MASER Colombia, distribuidora líder de equipos geotécnicos con más de 35 años de experiencia y marca Royal Eijkelkamp, requiere un ecosistema digital integrado que unifique sus operaciones de ventas, gestión interna y atención al cliente.</p>
+    <p>Forbin SAS propone una solución en tres fases evolutivas que transforma los procesos manuales en un ciclo de venta automatizado, eliminando la intervención humana en transacciones recurrentes.</p>
+
+    <div class="two-col">
+      <div class="col-card">
+        <h3>🎯 Objetivo del proyecto</h3>
+        <p>Construir el ecosistema digital completo que permita a MASER operar ventas, gestión interna y atención al cliente de forma integrada y automatizada.</p>
+      </div>
+      <div class="col-card">
+        <h3>⚙️ Enfoque tecnológico</h3>
+        <p>Supabase + Next.js + Vercel para el panel y el portal; n8n en Railway para automatización; MercadoPago y Wompi para pagos locales.</p>
+      </div>
+    </div>
+
+    <div class="sep"></div>
+
+    <div class="section-tag">02</div>
+    <h1 class="section-title">Problema / Necesidad del Cliente</h1>
+    <p>MASER opera con procesos dispersos en hojas de cálculo y correos electrónicos, generando cuellos de botella críticos en la operación:</p>
+
+    <table class="challenge-table">
+      <thead><tr><th>Desafío</th><th>Impacto actual</th><th>Propuesta de valor</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Gestión manual de pedidos</strong></td><td>Demoras B2B, errores en precios</td><td>CRUDs automáticos en tiempo real</td></tr>
+        <tr><td><strong>Sin canal online de ventas</strong></td><td>Cero ingresos fuera del horario laboral</td><td>Tienda online con checkout dual</td></tr>
+        <tr><td><strong>Sin visibilidad gerencial</strong></td><td>Decisiones con datos tardíos</td><td>Dashboards TV en tiempo real</td></tr>
+        <tr><td><strong>Notificaciones manuales</strong></td><td>El cliente no conoce el estado de su pedido</td><td>Email y WhatsApp automáticos</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="page-footer">
+    <span class="page-footer-text">Forbin SAS · Desarrollo de software basado en IA · forbin.co</span>
+    <span class="page-footer-conf">Confidencial</span>
+  </div>
+</div>
+
+<!-- PÁGINA 2 -->
+<div class="page">
+  <div class="page-header">
+    <span class="page-header-company">Forbin SAS · Propuesta Comercial</span>
+    <span class="page-header-right">MASER Colombia · 2026</span>
+  </div>
+  <div class="page-body">
+    <div class="section-tag">03</div>
+    <h1 class="section-title">Solución Propuesta</h1>
+    <p>Una plataforma modular en tres frentes interconectados: <strong>panel administrativo</strong>, <strong>canal de ventas online</strong> y <strong>portal del cliente</strong>, desplegados por fases con valor inmediato en cada entrega.</p>
+
+    <h2 class="sub-title">Fases del proyecto</h2>
+
+    <div class="phase-card">
+      <div class="phase-left"><div class="phase-num">01</div><div class="phase-time">⏱ 4–6 semanas</div><div class="phase-valor">$6M – $10M COP</div></div>
+      <div class="phase-right">
+        <div class="phase-name">Fundación Operativa</div>
+        <div class="phase-obj">Panel administrativo en producción con base de datos real, autenticación por roles y CRUDs completos desde el día 1.</div>
+        <div class="phase-tags">
+          <span class="phase-tag">Supabase + Auth</span><span class="phase-tag">admin.maser.com.co</span><span class="phase-tag">Pipeline Kanban</span><span class="phase-tag">Cotizaciones PDF</span><span class="phase-tag">Dashboards TV</span><span class="phase-tag">Purchase Orders</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="phase-card">
+      <div class="phase-left"><div class="phase-num">02</div><div class="phase-time">⏱ 6–8 semanas</div><div class="phase-valor">$8M – $14M COP</div></div>
+      <div class="phase-right">
+        <div class="phase-name">Canal de Ventas Online</div>
+        <div class="phase-obj">maser.com.co activado con carrito, checkout y pasarela dual (MercadoPago + Wompi) sincronizada con el panel.</div>
+        <div class="phase-tags">
+          <span class="phase-tag">Carrito + Checkout</span><span class="phase-tag">MercadoPago</span><span class="phase-tag">Wompi / PSE</span><span class="phase-tag">Webhooks</span><span class="phase-tag">n8n notificaciones</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="phase-card">
+      <div class="phase-left"><div class="phase-num">03</div><div class="phase-time">⏱ 8–10 semanas</div><div class="phase-valor">$10M – $18M COP</div></div>
+      <div class="phase-right">
+        <div class="phase-name">Portal del Cliente y Automatización Total</div>
+        <div class="phase-obj">Portal propio con historial, facturas y soporte. Motor de precios que elimina la intervención humana del ciclo de venta.</div>
+        <div class="phase-tags">
+          <span class="phase-tag">cuenta.maser.com.co</span><span class="phase-tag">WhatsApp Twilio</span><span class="phase-tag">Motor de precios</span><span class="phase-tag">n8n completo</span><span class="phase-tag">Cotización automática</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="sep"></div>
+
+    <div class="section-tag">04</div>
+    <h1 class="section-title">Beneficios para MASER</h1>
+    <div class="benefits-grid">
+      <div class="benefit-item">
+        <div class="benefit-icon">⚡</div>
+        <div class="benefit-text"><h4>Operación 24/7</h4><p>Pedidos confirmados sin intervención humana, incluso en fines de semana.</p></div>
+      </div>
+      <div class="benefit-item">
+        <div class="benefit-icon">📊</div>
+        <div class="benefit-text"><h4>Visibilidad en tiempo real</h4><p>Dashboards gerenciales con métricas actualizadas al instante.</p></div>
+      </div>
+      <div class="benefit-item">
+        <div class="benefit-icon">🔒</div>
+        <div class="benefit-text"><h4>Control total de datos</h4><p>Infraestructura y código siempre bajo propiedad de MASER.</p></div>
+      </div>
+      <div class="benefit-item">
+        <div class="benefit-icon">🚀</div>
+        <div class="benefit-text"><h4>Escalabilidad progresiva</h4><p>Cada fase entrega valor inmediato. Sin esperar años para ver resultados.</p></div>
+      </div>
+    </div>
+  </div>
+  <div class="page-footer">
+    <span class="page-footer-text">Forbin SAS · Desarrollo de software basado en IA · forbin.co</span>
+    <span class="page-footer-conf">Confidencial</span>
+  </div>
+</div>
+
+<!-- PÁGINA 3 -->
+<div class="page last">
+  <div class="page-header">
+    <span class="page-header-company">Forbin SAS · Propuesta Comercial</span>
+    <span class="page-header-right">MASER Colombia · 2026</span>
+  </div>
+  <div class="page-body">
+    <div class="section-tag">05</div>
+    <h1 class="section-title">Inversión</h1>
+    <div class="payment-note"><strong>Estructura por hitos:</strong> 50% anticipo al inicio de cada fase · 50% al desplegar en producción y obtener aprobación. Incluye 2 meses de garantía de puesta en marcha por fase.</div>
+
+    <table class="price-table">
+      <thead><tr><th>Fase</th><th>Valor estimado</th><th>Anticipo (50%)</th><th>Entrega (50%)</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Fase 1</strong> — Fundación Operativa</td><td>$6.000.000 – $10.000.000</td><td>$3M – $5M</td><td>$3M – $5M</td></tr>
+        <tr><td><strong>Fase 2</strong> — Canal de Ventas Online</td><td>$8.000.000 – $14.000.000</td><td>$4M – $7M</td><td>$4M – $7M</td></tr>
+        <tr><td><strong>Fase 3</strong> — Portal del Cliente</td><td>$10.000.000 – $18.000.000</td><td>$5M – $9M</td><td>$5M – $9M</td></tr>
+      </tbody>
+      <tfoot><tr><td>TOTAL DEL PROYECTO (COP)</td><td>$24.000.000 – $42.000.000</td><td colspan="2">Según alcance definitivo</td></tr></tfoot>
+    </table>
+
+    <div class="sep"></div>
+
+    <div class="section-tag">06</div>
+    <h1 class="section-title">¿Por Qué Forbin SAS?</h1>
+    <div class="differentiators">
+      <div class="diff-item"><h4>Experiencia en B2B colombiano</h4><p>Arquitecturas Supabase + Next.js probadas en operaciones similares a MASER.</p></div>
+      <div class="diff-item"><h4>Dominio de pagos locales</h4><p>MercadoPago y Wompi con soporte nativo para PSE, Efecty y Nequi.</p></div>
+      <div class="diff-item"><h4>Entrega por hitos verificables</h4><p>Cada fase es funcional e independiente. Se paga solo lo que se entrega.</p></div>
+      <div class="diff-item"><h4>Propiedad total del cliente</h4><p>Código e infraestructura bajo control de MASER desde el primer día.</p></div>
+    </div>
+
+    <div class="sep"></div>
+
+    <div class="section-tag">07</div>
+    <h1 class="section-title">Términos y Condiciones</h1>
+    <div class="terms-grid">
+      <div class="term-item">📋 Código fuente propiedad de MASER al completar el pago de cada fase.</div>
+      <div class="term-item">🔄 Cambios de alcance se cotizarán por adendum al contrato.</div>
+      <div class="term-item">🛡️ 2 meses de garantía por fase, sin costo adicional.</div>
+      <div class="term-item">💳 Licencia mensual post-proyecto: $600.000 – $1.200.000 COP/mes.</div>
+      <div class="term-item">📅 Cancelación de licencia con 30 días de preaviso.</div>
+      <div class="term-item">⏱️ Tiempos sujetos a provisión de accesos e insumos por MASER.</div>
+    </div>
+
+    <div class="cta-box">
+      <h2>¿Listos para arrancar?</h2>
+      <p>Esta propuesta tiene vigencia de 30 días. El siguiente paso es acordar el inicio de la Fase 1 y recibir el anticipo.</p>
+      <div class="cta-actions">
+        <div class="cta-action"><strong>📧 hola@forbin.co</strong>Escríbenos</div>
+        <div class="cta-action"><strong>📱 +57 310 000 0000</strong>WhatsApp</div>
+        <div class="cta-action"><strong>🌐 forbin.co</strong>Visítanos</div>
+      </div>
+    </div>
+  </div>
+  <div class="page-footer">
+    <span class="page-footer-text">Forbin SAS · Desarrollo de software basado en IA · forbin.co</span>
+    <span class="page-footer-conf">Confidencial</span>
+  </div>
+</div>
+
+</body>
+</html>
