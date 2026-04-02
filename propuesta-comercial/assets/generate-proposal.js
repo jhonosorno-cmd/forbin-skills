@@ -21,56 +21,55 @@ const C = {
 
 // ─── PROPOSAL DATA (parametric — skill will inject these) ────────────────────
 const DATA = {
-  empresa:        'Forbin SAS',
-  clienteNombre:  'MASER Colombia',
-  clienteRazon:   'Ecosistema Digital MASER',
-  fecha:          '30 de marzo de 2026',
-  version:        '1.0',
-  resumenEjecutivo: `MASER Colombia, distribuidora líder de equipos geotécnicos con más de 35 años de experiencia, requiere un ecosistema digital integrado que unifique sus operaciones de ventas, gestión interna y atención al cliente. Forbin SAS propone una solución en tres fases que transforma sus procesos manuales en un ciclo de venta automatizado, reduciendo tiempos de respuesta y eliminando la intervención humana en transacciones recurrentes.`,
-  problema: `MASER opera con procesos de cotización, pedidos y seguimiento de clientes dispersos en hojas de cálculo y correos electrónicos. Esto genera demoras en la atención B2B, precios inconsistentes por cliente y ausencia de visibilidad en tiempo real para la gerencia. La falta de un canal de ventas online limita el crecimiento fuera del horario laboral.`,
-  solucion: `Una plataforma web modular compuesta por un panel administrativo (admin.maser.com.co), un canal de ventas online (maser.com.co) y un portal del cliente (cuenta.maser.com.co), sobre infraestructura Supabase + Vercel + n8n, con automatización de notificaciones vía Gmail API y WhatsApp (Twilio).`,
+  empresa:        '{{EMPRESA_NOMBRE}}',
+  clienteNombre:  '{{CLIENTE_NOMBRE}}',
+  clienteRazon:   '{{PROYECTO_TITULO}}',
+  fecha:          '{{FECHA}}',
+  version:        '{{VERSION}}',
+  resumenEjecutivo: '{{RESUMEN_EJECUTIVO}}',
+  problema:       '{{PROBLEMA}}',
+  solucion:       '{{SOLUCION_DESCRIPCION}}',
   porQueNosotros: [
-    'Experiencia comprobada en arquitecturas Supabase + Next.js para empresas B2B colombianas.',
-    'Dominio de integraciones de pagos locales: MercadoPago y Wompi.',
-    'Metodología de entrega por hitos: cada fase es funcional e independiente.',
-    'Soporte post-entrega con garantía de 2 meses por fase y licencia mensual flexible.',
-    'El código y los datos son siempre propiedad de MASER.',
+    '{{DIFF_1}}',
+    '{{DIFF_2}}',
+    '{{DIFF_3}}',
+    '{{DIFF_4}}',
   ],
   fases: [
     {
-      nombre: 'Fase 1 — Fundación Operativa',
-      objetivo: 'Panel administrativo en producción con base de datos real y CRUDs completos.',
-      entregables: ['Supabase configurado', 'admin.maser.com.co', 'CRUDs completos', 'Módulo Purchase Orders', 'Dashboards TV', 'Notificaciones email'],
-      valor: '$6.000.000 – $10.000.000 COP',
-      tiempo: '4–6 semanas',
+      nombre:       'Fase 1 — {{FASE_1_NOMBRE}}',
+      objetivo:     '{{FASE_1_OBJETIVO}}',
+      entregables:  ['{{FASE_1_TAG_1}}', '{{FASE_1_TAG_2}}', '{{FASE_1_TAG_3}}'],
+      valor:        '{{FASE_1_VALOR}}',
+      tiempo:       '{{FASE_1_TIEMPO}}',
     },
     {
-      nombre: 'Fase 2 — Canal de Ventas Online',
-      objetivo: 'maser.com.co como canal de ventas con pasarela de pagos dual.',
-      entregables: ['Catálogo en BD', 'Carrito y checkout', 'MercadoPago + Wompi', 'Órdenes sincronizadas', 'n8n notificaciones'],
-      valor: '$8.000.000 – $14.000.000 COP',
-      tiempo: '6–8 semanas',
+      nombre:       'Fase 2 — {{FASE_2_NOMBRE}}',
+      objetivo:     '{{FASE_2_OBJETIVO}}',
+      entregables:  ['{{FASE_2_TAG_1}}', '{{FASE_2_TAG_2}}', '{{FASE_2_TAG_3}}'],
+      valor:        '{{FASE_2_VALOR}}',
+      tiempo:       '{{FASE_2_TIEMPO}}',
     },
     {
-      nombre: 'Fase 3 — Portal del Cliente',
-      objetivo: 'Automatización total del ciclo de venta y portal propio para el cliente.',
-      entregables: ['Portal cuenta.maser.com.co', 'WhatsApp con número de guía', 'Motor de precios', 'n8n flujo completo', 'Base cotización automática'],
-      valor: '$10.000.000 – $18.000.000 COP',
-      tiempo: '8–10 semanas',
+      nombre:       'Fase 3 — {{FASE_3_NOMBRE}}',
+      objetivo:     '{{FASE_3_OBJETIVO}}',
+      entregables:  ['{{FASE_3_TAG_1}}', '{{FASE_3_TAG_2}}', '{{FASE_3_TAG_3}}'],
+      valor:        '{{FASE_3_VALOR}}',
+      tiempo:       '{{FASE_3_TIEMPO}}',
     },
   ],
   precios: [
-    { fase: 'Fase 1 — Fundación Operativa',    valor: '$6M – $10M COP',  anticipo: '$3M – $5M COP', entrega: '$3M – $5M COP' },
-    { fase: 'Fase 2 — Canal de Ventas Online',  valor: '$8M – $14M COP', anticipo: '$4M – $7M COP', entrega: '$4M – $7M COP' },
-    { fase: 'Fase 3 — Portal del Cliente',      valor: '$10M – $18M COP',anticipo: '$5M – $9M COP', entrega: '$5M – $9M COP' },
-    { fase: 'TOTAL DEL PROYECTO',               valor: '$24M – $42M COP',anticipo: '',               entrega: '' },
+    { fase: 'Fase 1 — {{FASE_1_NOMBRE}}', valor: '{{PRECIO_1_VALOR}}', anticipo: '{{PRECIO_1_ANTICIPO}}', entrega: '{{PRECIO_1_ENTREGA}}' },
+    { fase: 'Fase 2 — {{FASE_2_NOMBRE}}', valor: '{{PRECIO_2_VALOR}}', anticipo: '{{PRECIO_2_ANTICIPO}}', entrega: '{{PRECIO_2_ENTREGA}}' },
+    { fase: 'Fase 3 — {{FASE_3_NOMBRE}}', valor: '{{PRECIO_3_VALOR}}', anticipo: '{{PRECIO_3_ANTICIPO}}', entrega: '{{PRECIO_3_ENTREGA}}' },
+    { fase: 'TOTAL DEL PROYECTO',         valor: '{{PRECIO_TOTAL}}',   anticipo: '',                      entrega: '' },
   ],
   terminos: [
-    'El código fuente es propiedad de MASER al completar el pago de cada fase.',
-    'Los cambios de alcance durante el desarrollo se cotizarán mediante adendum.',
-    'Cada fase incluye 2 meses de garantía de puesta en marcha sin costo adicional.',
-    'La licencia mensual post-proyecto oscila entre $600.000 y $1.200.000 COP/mes.',
-    'La cancelación de licencia requiere 30 días de preaviso; datos y código permanecen bajo control de MASER.',
+    '{{TERMINO_1}}',
+    '{{TERMINO_2}}',
+    '{{TERMINO_3}}',
+    '{{TERMINO_4}}',
+    '{{TERMINO_5}}',
   ],
 };
 
@@ -416,6 +415,6 @@ const doc = new Document({
 });
 
 Packer.toBuffer(doc).then(buf => {
-  fs.writeFileSync('/home/claude/propuesta-skill/propuesta-demo.docx', buf);
-  console.log('✅  propuesta-demo.docx generada');
+  fs.writeFileSync('/mnt/user-data/outputs/propuesta-{{CLIENTE_NOMBRE}}-v{{VERSION}}.docx', buf);
+  console.log('✅  propuesta generada');
 });
