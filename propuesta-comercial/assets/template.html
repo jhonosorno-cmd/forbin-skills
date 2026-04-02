@@ -445,58 +445,58 @@
   <div class="cover-top">
     <div class="cover-logo-box">TU LOGO</div>
     <div class="cover-meta">
-      Fecha: 30 de marzo de 2026<br>
-      Versión: 1.0<br>
+      Fecha: {{FECHA}}<br>
+      Versión: {{VERSION}}<br>
       Confidencial
     </div>
   </div>
   <div class="cover-body">
     <div class="cover-label">Propuesta comercial</div>
-    <div class="cover-title">Ecosistema<br>Digital MASER</div>
-    <div class="cover-subtitle">Plataforma integrada de ventas, gestión y atención al cliente</div>
+    <div class="cover-title">{{PROYECTO_TITULO}}</div>
+    <div class="cover-subtitle">{{PROYECTO_SUBTITULO}}</div>
     <div class="cover-divider"></div>
     <div class="cover-client-label">Preparada para</div>
-    <div class="cover-client-name">MASER Colombia</div>
+    <div class="cover-client-name">{{CLIENTE_NOMBRE}}</div>
   </div>
   <div class="cover-bottom">
     <div>
-      <div class="cover-bottom-company">Forbin SAS</div>
-      <div class="cover-bottom-tagline">Desarrollo de software basado en IA</div>
+      <div class="cover-bottom-company">{{EMPRESA_NOMBRE}}</div>
+      <div class="cover-bottom-tagline">{{EMPRESA_TAGLINE}}</div>
     </div>
-    <div class="cover-version">v1.0 · 2026</div>
+    <div class="cover-version">v{{VERSION}} · {{AÑO}}</div>
   </div>
 </div>
 
 <!-- PÁGINA 1 -->
 <div class="page">
   <div class="page-header">
-    <span class="page-header-company">Forbin SAS · Propuesta Comercial</span>
-    <span class="page-header-right">MASER Colombia · 2026</span>
+    <span class="page-header-company">{{EMPRESA_NOMBRE}} · Propuesta Comercial</span>
+    <span class="page-header-right">{{CLIENTE_NOMBRE}} · {{AÑO}}</span>
   </div>
   <div class="page-body">
     <div class="section-tag">Información general</div>
     <div class="client-info-bar">
-      <div class="info-field"><label>Cliente</label><span>MASER Colombia</span></div>
-      <div class="info-field"><label>Contacto</label><span>Gerencia comercial</span></div>
-      <div class="info-field"><label>Sector</label><span>Equipos geotécnicos B2B</span></div>
-      <div class="info-field"><label>Proveedor</label><span>Forbin SAS</span></div>
-      <div class="info-field"><label>Fecha</label><span>30 de marzo de 2026</span></div>
-      <div class="info-field"><label>Vigencia</label><span>30 días calendario</span></div>
+      <div class="info-field"><label>Cliente</label><span>{{CLIENTE_NOMBRE}}</span></div>
+      <div class="info-field"><label>Contacto</label><span>{{CLIENTE_CONTACTO}}</span></div>
+      <div class="info-field"><label>Sector</label><span>{{CLIENTE_SECTOR}}</span></div>
+      <div class="info-field"><label>Proveedor</label><span>{{EMPRESA_NOMBRE}}</span></div>
+      <div class="info-field"><label>Fecha</label><span>{{FECHA}}</span></div>
+      <div class="info-field"><label>Vigencia</label><span>{{VIGENCIA}}</span></div>
     </div>
 
     <div class="section-tag">01</div>
     <h1 class="section-title">Resumen Ejecutivo</h1>
-    <p>MASER Colombia, distribuidora líder de equipos geotécnicos con más de 35 años de experiencia y marca Royal Eijkelkamp, requiere un ecosistema digital integrado que unifique sus operaciones de ventas, gestión interna y atención al cliente.</p>
-    <p>Forbin SAS propone una solución en tres fases evolutivas que transforma los procesos manuales en un ciclo de venta automatizado, eliminando la intervención humana en transacciones recurrentes.</p>
+    <p>{{RESUMEN_P1}}</p>
+    <p>{{RESUMEN_P2}}</p>
 
     <div class="two-col">
       <div class="col-card">
         <h3>🎯 Objetivo del proyecto</h3>
-        <p>Construir el ecosistema digital completo que permita a MASER operar ventas, gestión interna y atención al cliente de forma integrada y automatizada.</p>
+        <p>{{OBJETIVO}}</p>
       </div>
       <div class="col-card">
         <h3>⚙️ Enfoque tecnológico</h3>
-        <p>Supabase + Next.js + Vercel para el panel y el portal; n8n en Railway para automatización; MercadoPago y Wompi para pagos locales.</p>
+        <p>{{TECNOLOGIA}}</p>
       </div>
     </div>
 
@@ -504,20 +504,20 @@
 
     <div class="section-tag">02</div>
     <h1 class="section-title">Problema / Necesidad del Cliente</h1>
-    <p>MASER opera con procesos dispersos en hojas de cálculo y correos electrónicos, generando cuellos de botella críticos en la operación:</p>
+    <p>{{PROBLEMA}}</p>
 
     <table class="challenge-table">
       <thead><tr><th>Desafío</th><th>Impacto actual</th><th>Propuesta de valor</th></tr></thead>
       <tbody>
-        <tr><td><strong>Gestión manual de pedidos</strong></td><td>Demoras B2B, errores en precios</td><td>CRUDs automáticos en tiempo real</td></tr>
-        <tr><td><strong>Sin canal online de ventas</strong></td><td>Cero ingresos fuera del horario laboral</td><td>Tienda online con checkout dual</td></tr>
-        <tr><td><strong>Sin visibilidad gerencial</strong></td><td>Decisiones con datos tardíos</td><td>Dashboards TV en tiempo real</td></tr>
-        <tr><td><strong>Notificaciones manuales</strong></td><td>El cliente no conoce el estado de su pedido</td><td>Email y WhatsApp automáticos</td></tr>
+        <tr><td><strong>{{DESAFIO_1}}</strong></td><td>{{IMPACTO_1}}</td><td>{{VALOR_1}}</td></tr>
+        <tr><td><strong>{{DESAFIO_2}}</strong></td><td>{{IMPACTO_2}}</td><td>{{VALOR_2}}</td></tr>
+        <tr><td><strong>{{DESAFIO_3}}</strong></td><td>{{IMPACTO_3}}</td><td>{{VALOR_3}}</td></tr>
+        <tr><td><strong>{{DESAFIO_4}}</strong></td><td>{{IMPACTO_4}}</td><td>{{VALOR_4}}</td></tr>
       </tbody>
     </table>
   </div>
   <div class="page-footer">
-    <span class="page-footer-text">Forbin SAS · Desarrollo de software basado en IA · forbin.co</span>
+    <span class="page-footer-text">{{EMPRESA_NOMBRE}} · {{EMPRESA_TAGLINE}} · {{EMPRESA_WEB}}</span>
     <span class="page-footer-conf">Confidencial</span>
   </div>
 </div>
@@ -525,45 +525,45 @@
 <!-- PÁGINA 2 -->
 <div class="page">
   <div class="page-header">
-    <span class="page-header-company">Forbin SAS · Propuesta Comercial</span>
-    <span class="page-header-right">MASER Colombia · 2026</span>
+    <span class="page-header-company">{{EMPRESA_NOMBRE}} · Propuesta Comercial</span>
+    <span class="page-header-right">{{CLIENTE_NOMBRE}} · {{AÑO}}</span>
   </div>
   <div class="page-body">
     <div class="section-tag">03</div>
     <h1 class="section-title">Solución Propuesta</h1>
-    <p>Una plataforma modular en tres frentes interconectados: <strong>panel administrativo</strong>, <strong>canal de ventas online</strong> y <strong>portal del cliente</strong>, desplegados por fases con valor inmediato en cada entrega.</p>
+    <p>{{SOLUCION_DESCRIPCION}}</p>
 
     <h2 class="sub-title">Fases del proyecto</h2>
 
     <div class="phase-card">
-      <div class="phase-left"><div class="phase-num">01</div><div class="phase-time">⏱ 4–6 semanas</div><div class="phase-valor">$6M – $10M COP</div></div>
+      <div class="phase-left"><div class="phase-num">01</div><div class="phase-time">⏱ {{FASE_1_TIEMPO}}</div><div class="phase-valor">{{FASE_1_VALOR}}</div></div>
       <div class="phase-right">
-        <div class="phase-name">Fundación Operativa</div>
-        <div class="phase-obj">Panel administrativo en producción con base de datos real, autenticación por roles y CRUDs completos desde el día 1.</div>
+        <div class="phase-name">{{FASE_1_NOMBRE}}</div>
+        <div class="phase-obj">{{FASE_1_OBJETIVO}}</div>
         <div class="phase-tags">
-          <span class="phase-tag">Supabase + Auth</span><span class="phase-tag">admin.maser.com.co</span><span class="phase-tag">Pipeline Kanban</span><span class="phase-tag">Cotizaciones PDF</span><span class="phase-tag">Dashboards TV</span><span class="phase-tag">Purchase Orders</span>
+          <span class="phase-tag">{{FASE_1_TAG_1}}</span><span class="phase-tag">{{FASE_1_TAG_2}}</span><span class="phase-tag">{{FASE_1_TAG_3}}</span>
         </div>
       </div>
     </div>
 
     <div class="phase-card">
-      <div class="phase-left"><div class="phase-num">02</div><div class="phase-time">⏱ 6–8 semanas</div><div class="phase-valor">$8M – $14M COP</div></div>
+      <div class="phase-left"><div class="phase-num">02</div><div class="phase-time">⏱ {{FASE_2_TIEMPO}}</div><div class="phase-valor">{{FASE_2_VALOR}}</div></div>
       <div class="phase-right">
-        <div class="phase-name">Canal de Ventas Online</div>
-        <div class="phase-obj">maser.com.co activado con carrito, checkout y pasarela dual (MercadoPago + Wompi) sincronizada con el panel.</div>
+        <div class="phase-name">{{FASE_2_NOMBRE}}</div>
+        <div class="phase-obj">{{FASE_2_OBJETIVO}}</div>
         <div class="phase-tags">
-          <span class="phase-tag">Carrito + Checkout</span><span class="phase-tag">MercadoPago</span><span class="phase-tag">Wompi / PSE</span><span class="phase-tag">Webhooks</span><span class="phase-tag">n8n notificaciones</span>
+          <span class="phase-tag">{{FASE_2_TAG_1}}</span><span class="phase-tag">{{FASE_2_TAG_2}}</span><span class="phase-tag">{{FASE_2_TAG_3}}</span>
         </div>
       </div>
     </div>
 
     <div class="phase-card">
-      <div class="phase-left"><div class="phase-num">03</div><div class="phase-time">⏱ 8–10 semanas</div><div class="phase-valor">$10M – $18M COP</div></div>
+      <div class="phase-left"><div class="phase-num">03</div><div class="phase-time">⏱ {{FASE_3_TIEMPO}}</div><div class="phase-valor">{{FASE_3_VALOR}}</div></div>
       <div class="phase-right">
-        <div class="phase-name">Portal del Cliente y Automatización Total</div>
-        <div class="phase-obj">Portal propio con historial, facturas y soporte. Motor de precios que elimina la intervención humana del ciclo de venta.</div>
+        <div class="phase-name">{{FASE_3_NOMBRE}}</div>
+        <div class="phase-obj">{{FASE_3_OBJETIVO}}</div>
         <div class="phase-tags">
-          <span class="phase-tag">cuenta.maser.com.co</span><span class="phase-tag">WhatsApp Twilio</span><span class="phase-tag">Motor de precios</span><span class="phase-tag">n8n completo</span><span class="phase-tag">Cotización automática</span>
+          <span class="phase-tag">{{FASE_3_TAG_1}}</span><span class="phase-tag">{{FASE_3_TAG_2}}</span><span class="phase-tag">{{FASE_3_TAG_3}}</span>
         </div>
       </div>
     </div>
@@ -571,28 +571,28 @@
     <div class="sep"></div>
 
     <div class="section-tag">04</div>
-    <h1 class="section-title">Beneficios para MASER</h1>
+    <h1 class="section-title">Beneficios para {{CLIENTE_NOMBRE}}</h1>
     <div class="benefits-grid">
       <div class="benefit-item">
-        <div class="benefit-icon">⚡</div>
-        <div class="benefit-text"><h4>Operación 24/7</h4><p>Pedidos confirmados sin intervención humana, incluso en fines de semana.</p></div>
+        <div class="benefit-icon">{{BENEFICIO_1_ICONO}}</div>
+        <div class="benefit-text"><h4>{{BENEFICIO_1_TITULO}}</h4><p>{{BENEFICIO_1_DESC}}</p></div>
       </div>
       <div class="benefit-item">
-        <div class="benefit-icon">📊</div>
-        <div class="benefit-text"><h4>Visibilidad en tiempo real</h4><p>Dashboards gerenciales con métricas actualizadas al instante.</p></div>
+        <div class="benefit-icon">{{BENEFICIO_2_ICONO}}</div>
+        <div class="benefit-text"><h4>{{BENEFICIO_2_TITULO}}</h4><p>{{BENEFICIO_2_DESC}}</p></div>
       </div>
       <div class="benefit-item">
-        <div class="benefit-icon">🔒</div>
-        <div class="benefit-text"><h4>Control total de datos</h4><p>Infraestructura y código siempre bajo propiedad de MASER.</p></div>
+        <div class="benefit-icon">{{BENEFICIO_3_ICONO}}</div>
+        <div class="benefit-text"><h4>{{BENEFICIO_3_TITULO}}</h4><p>{{BENEFICIO_3_DESC}}</p></div>
       </div>
       <div class="benefit-item">
-        <div class="benefit-icon">🚀</div>
-        <div class="benefit-text"><h4>Escalabilidad progresiva</h4><p>Cada fase entrega valor inmediato. Sin esperar años para ver resultados.</p></div>
+        <div class="benefit-icon">{{BENEFICIO_4_ICONO}}</div>
+        <div class="benefit-text"><h4>{{BENEFICIO_4_TITULO}}</h4><p>{{BENEFICIO_4_DESC}}</p></div>
       </div>
     </div>
   </div>
   <div class="page-footer">
-    <span class="page-footer-text">Forbin SAS · Desarrollo de software basado en IA · forbin.co</span>
+    <span class="page-footer-text">{{EMPRESA_NOMBRE}} · {{EMPRESA_TAGLINE}} · {{EMPRESA_WEB}}</span>
     <span class="page-footer-conf">Confidencial</span>
   </div>
 </div>
@@ -600,33 +600,33 @@
 <!-- PÁGINA 3 -->
 <div class="page last">
   <div class="page-header">
-    <span class="page-header-company">Forbin SAS · Propuesta Comercial</span>
-    <span class="page-header-right">MASER Colombia · 2026</span>
+    <span class="page-header-company">{{EMPRESA_NOMBRE}} · Propuesta Comercial</span>
+    <span class="page-header-right">{{CLIENTE_NOMBRE}} · {{AÑO}}</span>
   </div>
   <div class="page-body">
     <div class="section-tag">05</div>
     <h1 class="section-title">Inversión</h1>
-    <div class="payment-note"><strong>Estructura por hitos:</strong> 50% anticipo al inicio de cada fase · 50% al desplegar en producción y obtener aprobación. Incluye 2 meses de garantía de puesta en marcha por fase.</div>
+    <div class="payment-note">{{NOTA_PAGO}}</div>
 
     <table class="price-table">
       <thead><tr><th>Fase</th><th>Valor estimado</th><th>Anticipo (50%)</th><th>Entrega (50%)</th></tr></thead>
       <tbody>
-        <tr><td><strong>Fase 1</strong> — Fundación Operativa</td><td>$6.000.000 – $10.000.000</td><td>$3M – $5M</td><td>$3M – $5M</td></tr>
-        <tr><td><strong>Fase 2</strong> — Canal de Ventas Online</td><td>$8.000.000 – $14.000.000</td><td>$4M – $7M</td><td>$4M – $7M</td></tr>
-        <tr><td><strong>Fase 3</strong> — Portal del Cliente</td><td>$10.000.000 – $18.000.000</td><td>$5M – $9M</td><td>$5M – $9M</td></tr>
+        <tr><td><strong>Fase 1</strong> — {{FASE_1_NOMBRE}}</td><td>{{PRECIO_1_VALOR}}</td><td>{{PRECIO_1_ANTICIPO}}</td><td>{{PRECIO_1_ENTREGA}}</td></tr>
+        <tr><td><strong>Fase 2</strong> — {{FASE_2_NOMBRE}}</td><td>{{PRECIO_2_VALOR}}</td><td>{{PRECIO_2_ANTICIPO}}</td><td>{{PRECIO_2_ENTREGA}}</td></tr>
+        <tr><td><strong>Fase 3</strong> — {{FASE_3_NOMBRE}}</td><td>{{PRECIO_3_VALOR}}</td><td>{{PRECIO_3_ANTICIPO}}</td><td>{{PRECIO_3_ENTREGA}}</td></tr>
       </tbody>
-      <tfoot><tr><td>TOTAL DEL PROYECTO (COP)</td><td>$24.000.000 – $42.000.000</td><td colspan="2">Según alcance definitivo</td></tr></tfoot>
+      <tfoot><tr><td>TOTAL DEL PROYECTO</td><td>{{PRECIO_TOTAL}}</td><td colspan="2">Según alcance definitivo</td></tr></tfoot>
     </table>
 
     <div class="sep"></div>
 
     <div class="section-tag">06</div>
-    <h1 class="section-title">¿Por Qué Forbin SAS?</h1>
+    <h1 class="section-title">¿Por Qué {{EMPRESA_NOMBRE}}?</h1>
     <div class="differentiators">
-      <div class="diff-item"><h4>Experiencia en B2B colombiano</h4><p>Arquitecturas Supabase + Next.js probadas en operaciones similares a MASER.</p></div>
-      <div class="diff-item"><h4>Dominio de pagos locales</h4><p>MercadoPago y Wompi con soporte nativo para PSE, Efecty y Nequi.</p></div>
-      <div class="diff-item"><h4>Entrega por hitos verificables</h4><p>Cada fase es funcional e independiente. Se paga solo lo que se entrega.</p></div>
-      <div class="diff-item"><h4>Propiedad total del cliente</h4><p>Código e infraestructura bajo control de MASER desde el primer día.</p></div>
+      <div class="diff-item"><h4>{{DIFF_1_TITULO}}</h4><p>{{DIFF_1_DESC}}</p></div>
+      <div class="diff-item"><h4>{{DIFF_2_TITULO}}</h4><p>{{DIFF_2_DESC}}</p></div>
+      <div class="diff-item"><h4>{{DIFF_3_TITULO}}</h4><p>{{DIFF_3_DESC}}</p></div>
+      <div class="diff-item"><h4>{{DIFF_4_TITULO}}</h4><p>{{DIFF_4_DESC}}</p></div>
     </div>
 
     <div class="sep"></div>
@@ -634,26 +634,26 @@
     <div class="section-tag">07</div>
     <h1 class="section-title">Términos y Condiciones</h1>
     <div class="terms-grid">
-      <div class="term-item">📋 Código fuente propiedad de MASER al completar el pago de cada fase.</div>
-      <div class="term-item">🔄 Cambios de alcance se cotizarán por adendum al contrato.</div>
-      <div class="term-item">🛡️ 2 meses de garantía por fase, sin costo adicional.</div>
-      <div class="term-item">💳 Licencia mensual post-proyecto: $600.000 – $1.200.000 COP/mes.</div>
-      <div class="term-item">📅 Cancelación de licencia con 30 días de preaviso.</div>
-      <div class="term-item">⏱️ Tiempos sujetos a provisión de accesos e insumos por MASER.</div>
+      <div class="term-item">{{TERMINO_1}}</div>
+      <div class="term-item">{{TERMINO_2}}</div>
+      <div class="term-item">{{TERMINO_3}}</div>
+      <div class="term-item">{{TERMINO_4}}</div>
+      <div class="term-item">{{TERMINO_5}}</div>
+      <div class="term-item">{{TERMINO_6}}</div>
     </div>
 
     <div class="cta-box">
-      <h2>¿Listos para arrancar?</h2>
-      <p>Esta propuesta tiene vigencia de 30 días. El siguiente paso es acordar el inicio de la Fase 1 y recibir el anticipo.</p>
+      <h2>{{CTA_TITULO}}</h2>
+      <p>{{CTA_DESCRIPCION}}</p>
       <div class="cta-actions">
-        <div class="cta-action"><strong>📧 hola@forbin.co</strong>Escríbenos</div>
-        <div class="cta-action"><strong>📱 +57 310 000 0000</strong>WhatsApp</div>
-        <div class="cta-action"><strong>🌐 forbin.co</strong>Visítanos</div>
+        <div class="cta-action"><strong>📧 {{EMPRESA_EMAIL}}</strong>Escríbenos</div>
+        <div class="cta-action"><strong>📱 {{EMPRESA_TEL}}</strong>WhatsApp</div>
+        <div class="cta-action"><strong>🌐 {{EMPRESA_WEB}}</strong>Visítanos</div>
       </div>
     </div>
   </div>
   <div class="page-footer">
-    <span class="page-footer-text">Forbin SAS · Desarrollo de software basado en IA · forbin.co</span>
+    <span class="page-footer-text">{{EMPRESA_NOMBRE}} · {{EMPRESA_TAGLINE}} · {{EMPRESA_WEB}}</span>
     <span class="page-footer-conf">Confidencial</span>
   </div>
 </div>
