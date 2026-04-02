@@ -26,43 +26,44 @@ const DATA = {
   clienteRazon:   '{{PROYECTO_TITULO}}',
   fecha:          '{{FECHA}}',
   version:        '{{VERSION}}',
-  resumenEjecutivo: '{{RESUMEN_EJECUTIVO}}',
-  problema:       '{{PROBLEMA}}',
-  solucion:       '{{SOLUCION_DESCRIPCION}}',
+  resumenEjecutivo: `{{RESUMEN_EJECUTIVO}}`,
+  problema: `{{PROBLEMA}}`,
+  solucion: `{{SOLUCION}}`,
   porQueNosotros: [
-    '{{DIFF_1}}',
-    '{{DIFF_2}}',
-    '{{DIFF_3}}',
-    '{{DIFF_4}}',
+    '{{POR_QUE_1}}',
+    '{{POR_QUE_2}}',
+    '{{POR_QUE_3}}',
+    '{{POR_QUE_4}}',
+    '{{POR_QUE_5}}',
   ],
   fases: [
     {
-      nombre:       'Fase 1 — {{FASE_1_NOMBRE}}',
-      objetivo:     '{{FASE_1_OBJETIVO}}',
-      entregables:  ['{{FASE_1_TAG_1}}', '{{FASE_1_TAG_2}}', '{{FASE_1_TAG_3}}'],
-      valor:        '{{FASE_1_VALOR}}',
-      tiempo:       '{{FASE_1_TIEMPO}}',
+      nombre: '{{FASE_1_NOMBRE}}',
+      objetivo: '{{FASE_1_OBJETIVO}}',
+      entregables: ['{{FASE_1_ENT_1}}', '{{FASE_1_ENT_2}}', '{{FASE_1_ENT_3}}'],
+      valor: '{{FASE_1_VALOR}}',
+      tiempo: '{{FASE_1_TIEMPO}}',
     },
     {
-      nombre:       'Fase 2 — {{FASE_2_NOMBRE}}',
-      objetivo:     '{{FASE_2_OBJETIVO}}',
-      entregables:  ['{{FASE_2_TAG_1}}', '{{FASE_2_TAG_2}}', '{{FASE_2_TAG_3}}'],
-      valor:        '{{FASE_2_VALOR}}',
-      tiempo:       '{{FASE_2_TIEMPO}}',
+      nombre: '{{FASE_2_NOMBRE}}',
+      objetivo: '{{FASE_2_OBJETIVO}}',
+      entregables: ['{{FASE_2_ENT_1}}', '{{FASE_2_ENT_2}}', '{{FASE_2_ENT_3}}'],
+      valor: '{{FASE_2_VALOR}}',
+      tiempo: '{{FASE_2_TIEMPO}}',
     },
     {
-      nombre:       'Fase 3 — {{FASE_3_NOMBRE}}',
-      objetivo:     '{{FASE_3_OBJETIVO}}',
-      entregables:  ['{{FASE_3_TAG_1}}', '{{FASE_3_TAG_2}}', '{{FASE_3_TAG_3}}'],
-      valor:        '{{FASE_3_VALOR}}',
-      tiempo:       '{{FASE_3_TIEMPO}}',
+      nombre: '{{FASE_3_NOMBRE}}',
+      objetivo: '{{FASE_3_OBJETIVO}}',
+      entregables: ['{{FASE_3_ENT_1}}', '{{FASE_3_ENT_2}}', '{{FASE_3_ENT_3}}'],
+      valor: '{{FASE_3_VALOR}}',
+      tiempo: '{{FASE_3_TIEMPO}}',
     },
   ],
   precios: [
-    { fase: 'Fase 1 — {{FASE_1_NOMBRE}}', valor: '{{PRECIO_1_VALOR}}', anticipo: '{{PRECIO_1_ANTICIPO}}', entrega: '{{PRECIO_1_ENTREGA}}' },
-    { fase: 'Fase 2 — {{FASE_2_NOMBRE}}', valor: '{{PRECIO_2_VALOR}}', anticipo: '{{PRECIO_2_ANTICIPO}}', entrega: '{{PRECIO_2_ENTREGA}}' },
-    { fase: 'Fase 3 — {{FASE_3_NOMBRE}}', valor: '{{PRECIO_3_VALOR}}', anticipo: '{{PRECIO_3_ANTICIPO}}', entrega: '{{PRECIO_3_ENTREGA}}' },
-    { fase: 'TOTAL DEL PROYECTO',         valor: '{{PRECIO_TOTAL}}',   anticipo: '',                      entrega: '' },
+    { fase: '{{FASE_1_NOMBRE}}', valor: '{{PRECIO_1_VALOR}}', anticipo: '{{PRECIO_1_ANTICIPO}}', entrega: '{{PRECIO_1_ENTREGA}}' },
+    { fase: '{{FASE_2_NOMBRE}}', valor: '{{PRECIO_2_VALOR}}', anticipo: '{{PRECIO_2_ANTICIPO}}', entrega: '{{PRECIO_2_ENTREGA}}' },
+    { fase: '{{FASE_3_NOMBRE}}', valor: '{{PRECIO_3_VALOR}}', anticipo: '{{PRECIO_3_ANTICIPO}}', entrega: '{{PRECIO_3_ENTREGA}}' },
+    { fase: 'TOTAL DEL PROYECTO', valor: '{{PRECIO_TOTAL}}', anticipo: '', entrega: '' },
   ],
   terminos: [
     '{{TERMINO_1}}',
@@ -333,7 +334,7 @@ const children = [
     alignment: AlignmentType.CENTER,
     spacing: { before: 400, after: 0 },
     border: { top: { style: BorderStyle.SINGLE, size: 4, color: C.mid, space: 8 } },
-    children: [new TextRun({ text: `${DATA.empresa}  ·  Desarrollo de software a medida con IA`, font: 'Inter', size: 18, color: C.textMuted, italics: true })],
+    children: [new TextRun({ text: `${DATA.empresa}  ·  {{EMPRESA_TAGLINE}}`, font: 'Inter', size: 18, color: C.textMuted, italics: true })],
   }),
 ];
 
@@ -415,6 +416,6 @@ const doc = new Document({
 });
 
 Packer.toBuffer(doc).then(buf => {
-  fs.writeFileSync('/mnt/user-data/outputs/propuesta-{{CLIENTE_NOMBRE}}-v{{VERSION}}.docx', buf);
-  console.log('✅  propuesta generada');
+  fs.writeFileSync('/home/claude/propuesta-[cliente].docx', buf);
+  console.log('✅  propuesta-demo.docx generada');
 });
