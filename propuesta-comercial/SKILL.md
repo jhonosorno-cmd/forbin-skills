@@ -65,10 +65,13 @@ wkhtmltopdf \
   --margin-top 0 --margin-bottom 0 \
   --margin-left 0 --margin-right 0 \
   --enable-local-file-access \
+  --disable-smart-shrinking \
   --dpi 150 \
   /home/claude/propuesta-[cliente].html \
   /mnt/user-data/outputs/propuesta-[cliente]-v[version].pdf
 ```
+
+> `--disable-smart-shrinking` evita que wkhtmltopdf reescale el contenido y genere páginas en blanco al final.
 
 ### Paso 3 — Verificar páginas
 
@@ -78,7 +81,7 @@ r = PdfReader('propuesta.pdf')
 print(f'Páginas: {len(r.pages)}')  # Esperado: 4
 ```
 
-Si hay página en blanco extra, reducir el `padding` del `.page-body` en la última sección.
+Si el PDF tiene más de 4 páginas, el contenido de la última sección desbordó. Reducir el `padding-bottom` de `.page-body` de `16px` a `8px` en el HTML generado y regenerar.
 
 ### Paso 4 — Entregar
 
